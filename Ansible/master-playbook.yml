@@ -1,0 +1,14 @@
+---
+- hosts: all
+  roles:
+  - common
+  - ros
+  - nodejs
+  - feathersjs
+  - pm2
+  - mongodb
+  - mserver_mockup
+  - mlogger
+  - elastic_apt
+  - filebeat_master
+  - metricbeat

@@ -1,0 +1,17 @@
+---
+ros:
+  release: melodic
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+  apt_repository:
+    repo: http://packages.ros.org/ros/ubuntu
+    filename: ros-latest.list
+  apt:
+    package: desktop-full
+  file:
+    ws_path: '{{ common.file.ansible_path }}/catkin_ws/src'
+
+ubuntu:
+  codename: bionic
+

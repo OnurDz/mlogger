@@ -1,0 +1,6 @@
+---
+nodejs:
+  apt:
+    package: nodejs=12.14.1-1nodesource1
+  script: setup_node12.sh
+  

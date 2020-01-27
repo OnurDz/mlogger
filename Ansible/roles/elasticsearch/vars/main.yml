@@ -1,0 +1,10 @@
+---
+elasticsearch:
+  apt:
+    package: elasticsearch
+  jvm:
+    src: jvm.options
+    dest: /etc/elasticsearch/jvm.options
+  config:
+    src: elasticsearch.yml
+    dest: /etc/elasticsearch/elasticsearch.yml

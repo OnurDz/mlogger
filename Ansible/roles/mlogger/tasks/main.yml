@@ -1,0 +1,27 @@
+---
+- name: Extracting logger node to '{{ ros.file.ws_path }}'
+  unarchive:
+    src: '{{ mlogger.unarchive.src }}'
+    dest: '{{ ros.file.ws_path }}'
+
+- name: Running catkin_make
+  shell: 'source {{ mlogger.sourcefile }} && cd {{ ros.file.ws_path }}/.. && catkin_make'
+  args:
+    executable: /bin/bash
+
+- name: Making sure robot_upstart is installed
+  apt:
+    package: 'ros-{{ ros.release }}-robot-upstart'
+  become: yes
+
+- name: Run the node mlogger using robot_upstart
+  shell: 'source {{ mlogger.sourcefile }} && rosrun robot_upstart install {{ mlogger.launch_path }}'
+  args:
+    executable: /bin/bash
+
+- name: Start mlogger service
+  systemd:
+    name: mlogger.service
+    state: started
+    enabled: yes
+  become: yes

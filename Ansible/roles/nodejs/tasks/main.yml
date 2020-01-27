@@ -1,0 +1,12 @@
+---
+- name: Getting nodeJS repository
+  script: '{{ nodejs.script }}'
+  become: yes
+
+- name: Making sure nodeJS is installed
+  apt:
+    package: '{{ nodejs.apt.package }}'
+    state: present
+    update_cache: yes
+  become: yes
+

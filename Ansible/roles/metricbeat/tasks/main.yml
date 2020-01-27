@@ -1,0 +1,13 @@
+---
+- name: Making sure metricbeat is installed
+  apt:
+    package: '{{ metricbeat.apt.package }}'
+    update_cache: yes
+  become: yes
+
+- name: Configuring metricbeat
+  copy:
+    src: '{{ metricbeat.config.src }}'
+    dest: '{{ metricbeat.config.dest }}'
+    mode: '0755'
+  become: yes

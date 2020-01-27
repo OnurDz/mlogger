@@ -1,0 +1,13 @@
+---
+- name: Making sure common packages are installed
+  apt:
+    package: '{{ common.apt.packages }}'
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Create ansible-files directory in '{{ common.file.ansible_path }}'
+  file:
+    path: '{{ common.file.ansible_path }}'
+    state: directory
+    mode: '0755'

@@ -1,0 +1,7 @@
+---
+filebeat:
+  apt:
+    package: filebeat
+  config:
+    src: filebeat.yml
+    dest: /etc/filebeat/filebeat.yml

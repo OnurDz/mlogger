@@ -1,0 +1,7 @@
+---
+- name: Making sure PM2 is installed
+  npm:
+    name: '{{ pm2.npm.name }}'
+    global: yes
+    state: present
+  become: yes

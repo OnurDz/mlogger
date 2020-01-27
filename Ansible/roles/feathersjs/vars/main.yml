@@ -1,0 +1,10 @@
+---
+feathersjs:
+  npm:
+    packages:
+    - '@feathersjs/feathers'
+    - '@feathersjs/errors'
+    - '@feathersjs/express'
+    - '@feathersjs/socketio'
+    - 'mongoose'
+    - 'feathers-mongoose'

@@ -1,0 +1,7 @@
+---
+metricbeat:
+  apt:
+    package: metricbeat
+  config:
+    src: metricbeat.yml
+    dest: /etc/metricbeat/metricbeat.yml

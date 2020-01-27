@@ -1,0 +1,7 @@
+---
+elastic_apt:
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  apt_repository:
+    repo: 'deb https://artifacts.elastic.co/packages/7.x/apt stable main'
+    file: elastic-7.x

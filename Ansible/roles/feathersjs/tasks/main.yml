@@ -1,0 +1,4 @@
+---
+- name: Making sure FeathersJS is installed
+  shell: "npm install -g {{ feathersjs.npm.packages | join(' ') }}"
+  become: yes

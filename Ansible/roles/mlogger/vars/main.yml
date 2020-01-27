@@ -1,0 +1,6 @@
+---
+mlogger:
+  unarchive:
+    src: mlogger.zip
+  sourcefile: '{{ common.file.ansible_path }}/catkin_ws/devel/setup.bash'
+  launch_path: mlogger/launch/mlogger.launch

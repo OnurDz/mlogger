@@ -1,0 +1,11 @@
+---
+- name: Adding apt keys of elastic.co
+  apt_key:
+    url: '{{ elastic_apt.apt_key.url }}'
+  become: yes
+
+- name: Adding apt repository of elastic.co
+  apt_repository:
+    repo: '{{ elastic_apt.apt_repository.repo }}'
+    filename: '{{ elastic_apt.apt_repository.file }}'
+  become: yes

@@ -1,0 +1,33 @@
+---
+- name: Installing dependencies
+  apt:
+    name: python-apt
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Importing MongoDB public key from Ubuntu key server
+  apt_key:
+    keyserver: '{{ mongodb.apt_key.keyserver }}'
+    id: '{{ mongodb.apt_key.id }}'
+  become: yes
+
+- name: Adding MongoDB repository to sources.list.d
+  apt_repository:
+    repo: '{{ mongodb.apt_repository.repo }}'
+    filename: '{{ mongodb.apt_repository.filename }}'
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Making sure MongoDB is installed
+  apt:
+    package: '{{ mongodb.apt.package }}'
+    state: present
+  become: yes
+
+- name: Starting MongoDB service
+  service:
+    name: mongod
+    state: started
+  become: yes

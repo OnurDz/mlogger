@@ -1,0 +1,5 @@
+---
+mserver_mockup:
+  unarchive:
+    src: mserver-mockup.zip
+    dest: '{{ common.file.ansible_path }}'

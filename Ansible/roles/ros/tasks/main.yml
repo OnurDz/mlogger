@@ -1,0 +1,30 @@
+---
+- name: Adding ROS repository to sources.list.d
+  apt_repository:
+    repo: "deb {{ ros.apt_repository.repo }} {{ ubuntu.codename }} main"
+    filename: '{{ ros.apt_repository.filename }}'
+    update_cache: no
+  become: yes
+
+- name: Setting up ROS apt keys
+  apt_key:
+    keyserver: '{{ ros.apt_key.keyserver }}'
+    id: '{{ ros.apt_key.id }}'
+  become: yes
+
+- name: Making sure ROS is installed
+  apt:
+    name: 'ros-{{ ros.release }}-{{ ros.apt.package }}'
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Generating Catkin workspace in ansible-directory
+  file:
+    path: '{{ ros.file.ws_path }}'
+    state: directory
+
+- name: Initializing catkin workspace
+  shell: 'source /opt/ros/melodic/setup.bash && cd {{ ros.file.ws_path }}/.. && catkin_make'
+  args:
+    executable: /bin/bash

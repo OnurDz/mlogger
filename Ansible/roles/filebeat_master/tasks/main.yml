@@ -1,0 +1,13 @@
+---
+- name: Making sure filebeat is installed
+  apt:
+    package: '{{ filebeat.apt.package }}'
+    update_cache: yes
+  become: yes
+
+- name: Configuring filebeat
+  copy:
+    src: '{{ filebeat.config.src }}'
+    dest: '{{ filebeat.config.dest }}'
+    mode: '0755'
+  become: yes

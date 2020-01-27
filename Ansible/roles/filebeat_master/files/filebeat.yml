@@ -1,0 +1,42 @@
+filebeat.inputs:
+- type: log
+  paths: 
+    - /var/log/syslog*
+  fields:
+    log.type: syslog
+    host.type: server
+  fields_under_root: true
+  enabled: true
+  reload.enabled: true
+  reload.period: 10s
+
+- type: log
+  paths:
+    - /var/log/mongodb/*.log
+  fields:
+    log.type: mongodb
+    host.type: server
+  fields_under_root: true
+  enabled: true
+  reload.enabled: true
+  reload.period: 10s
+
+
+filebeat.config.modules.path: /etc/filebeat/modules.d/*.yml
+#filebeat.modules:
+#- module: system
+
+output:
+  logstash:
+    hosts: ["10.0.0.11:9004"]
+#  for debug
+#  console:
+#    pretty: true
+
+logging.level: error
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  rotateeverybytes: 104857600
+  rotateonstartup: true

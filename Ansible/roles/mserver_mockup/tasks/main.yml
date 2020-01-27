@@ -1,0 +1,8 @@
+---
+- name: Extracting mserver-mockup.zip into /var/lib/ansible-files
+  unarchive:
+    src: '{{ mserver_mockup.unarchive.src }}'
+    dest: '{{ mserver_mockup.unarchive.dest }}'
+
+- name: Starting mserver using pm2
+  command: pm2 start '{{ mserver_mockup.unarchive.dest }}'/mserver-mockup/src/app.js

@@ -1,0 +1,24 @@
+---
+- name: Making sure elasticsearch is installed
+  apt:
+    package: '{{ elasticsearch.apt.package }}'
+    update_cache: yes
+  become: yes
+
+- name: Configuring jvm
+  copy:
+    src: '{{ elasticsearch.jvm.src }}'
+    dest: '{{ elasticsearch.jvm.dest }}'
+    group: elasticsearch
+    mode: '0660'
+  become: yes
+
+- name: Configuring elasticsearch
+  copy:
+    src: '{{ elasticsearch.config.src }}'
+    dest: '{{ elasticsearch.config.dest }}'
+    group: elasticsearch
+    mode: '0660'
+  become: yes
+
+#TODO System config, need consultation from sysadmin.

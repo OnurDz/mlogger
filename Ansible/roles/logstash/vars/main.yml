@@ -1,0 +1,10 @@
+---
+logstash:
+  apt:
+    package: logstash
+  config:
+    src: logstash.yml
+    dest: /etc/logstash/logstash.yml
+  pipeline:
+    src: logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
